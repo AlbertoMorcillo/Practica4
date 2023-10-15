@@ -1,7 +1,26 @@
 <?php
 //Created by: Alberto Morcillo
 
-function validarEmail($email, &$errors){
+function validarEmailLogin($email, &$errors){
+    validarEmailGeneral($email, $errors);
+}
+
+function validarPasswordLogin($password, &$errors){
+    validarPasswordGeneral($password, $errors);
+  
+}
+
+function validarEmailSignin($email, &$errors){
+    validarEmailGeneral($email, $errors);
+    
+}
+
+function validarPasswordSignin($password, &$errors){
+    validarPasswordGeneral($password, $errors);
+    
+}
+
+function validarEmailGeneral($email, &$errors){
     if (empty($email)) {
         $errors .= 'El email no puede estar vacío.<br>';
     } else {
@@ -11,9 +30,9 @@ function validarEmail($email, &$errors){
     }
 }
 
-function validarPassword($password, &$errors){
+function validarPasswordGeneral($password, &$errors) {
     if (empty($password)){
-        $errors .= 'La contraseña no puede estar vació.<br>';
+        $errors .= 'La contraseña no puede estar vacía.<br>';
     } else {
         if (strlen($password) < 6) {
             $errors .= 'La contraseña debe tener al menos 6 caracteres.<br>';

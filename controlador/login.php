@@ -11,8 +11,8 @@ $validPassword = isset($_POST['password']) ? htmlspecialchars($_POST['password']
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     include_once './validaciones.php';
 
-    validarEmail($validEmail, $errors);
-    validarPassword($validPassword, $errors);
+    validarEmailLogin($validEmail, $errors);
+    validarPasswordLogin($validPassword, $errors);
 
     if (empty($errors)){
         include_once '../modelo/Conection.php';
@@ -20,7 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         if (!validarEmailExistente($validEmail, $connexio)){
             $errors .= "No estas registrado.<br>";
         }
-    }
+        else {
+            //ToDo: Hacer que si esta todo ok y registrado tambien que inicie sesión y le envie al login que solo los usuarios registrados puede ver,modificar,insertar,borrar,etc.
+        }
+    } 
 }
 
 function entrarEnLogin(){
@@ -30,9 +33,6 @@ function entrarEnLogin(){
     } 
 }
 
-function login(){
-
-}
 
 include_once '../vista/login_view.php'
 ?>
