@@ -52,7 +52,7 @@ function validarPasswordGeneral($password, &$errors) {
     }
 }
 
-function validarPasswordRepetida($passwordRepetida, &$errors, $password){
+function validarPasswordRepetida($password, &$errors, $passwordRepetida){
     if(empty($passwordRepetida)){
         $errors .= 'El campo de repetir contraseña no puede estar vacío.<br>';
     }

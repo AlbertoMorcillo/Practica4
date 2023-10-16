@@ -14,6 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     validarEmailSignin($validEmail, $errors);
     validarPasswordSignin($validPassword, $errors);
+    validarPasswordRepetida($validPassword, $errors, $validPasswordRepetida);
 
     if (empty($errors)) {
         include_once '../modelo/Conection.php';
