@@ -52,11 +52,14 @@ function validarPasswordGeneral($password, &$errors) {
     }
 }
 
-function validarPasswordRepetida($passwordRepetida, &$errors){
+function validarPasswordRepetida($passwordRepetida, &$errors, $password){
     if(empty($passwordRepetida)){
         $errors .= 'El campo de repetir contraseña no puede estar vacío.<br>';
     }
-    
-
+    else{
+        if($passwordRepetida != $password){
+            $errors .= 'Las contraseñas no coinciden.<br>';
+        }
+    }
 }
 ?>
