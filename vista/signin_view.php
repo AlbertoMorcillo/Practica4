@@ -1,3 +1,6 @@
+<?php
+include_once '../controlador/signin.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,14 +18,13 @@
             <?php echo $errors ?>
         </div>
         <?php endif; ?>
+
         <form action="signin.php" method="post">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
-
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
-
-            <input type="submit" value="Sign In">
+            <button type="submit" name="signin" value="Sign In" class="btn-signin">Sign In </button>
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>
         <div class="login">

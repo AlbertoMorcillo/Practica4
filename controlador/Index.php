@@ -8,7 +8,7 @@ function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina){
     $resultados = obtenerTodosArticulos($connexio, $start, $cantidad_articulos_por_pagina);
     $listaArticulos = '';
     foreach ($resultados as $articulo) {
-        $listaArticulos .= '<li>' . $articulo['id'] . ' - ' . $articulo['article'] . '</li>';
+        $listaArticulos .= '<li>' . $articulo['article_id'] . ' - ' . $articulo['article'] . '</li>';
     }
     return $listaArticulos;
 }

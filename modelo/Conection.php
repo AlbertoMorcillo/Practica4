@@ -23,7 +23,8 @@ function obtenerTodosArticulos($connexio, $start, $cantidad_articulos_por_pagina
 }
 
 function calcularTotalArticulos($connexio){
-    $total_articulos = $connexio->query('SELECT COUNT(*) FROM articles')->fetchColumn();
+    $statement = $connexio->query('SELECT COUNT(*) FROM articles');
+    $total_articulos = $statement->fetchColumn();
     return $total_articulos;
 }
 
@@ -32,7 +33,6 @@ function calcularTotalPaginas($connexio, $cantidad_articulos_por_pagina){
     $numero_paginas = ceil($total_articulos / $cantidad_articulos_por_pagina);
     return $numero_paginas;
 }
-
 
 function comprobarUsuarioExistente($connexio, $email){
     $statement = $connexio->prepare("SELECT * FROM usuaris WHERE email = :email");
@@ -50,7 +50,8 @@ function validarEmailExistente($email, $connexio) {
 }
 
 function insertarUsuario($email, $password, $connexio){
-    $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasenya) VALUES (:email, :contrasenya)');
-    $statement->execute(array(':email' => $email, ':contrasenya' => $password));
+    $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasena) VALUES (:email, :contrasena)');
+    $statement->execute(array(':email' => $email, ':contrasena' => $password));
 }
+
 ?>
