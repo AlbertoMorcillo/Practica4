@@ -12,15 +12,17 @@
         <br>
         <form action="signin.php" method="post">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="username" autofocus>
+            <input type="email" id="email" name="email" autofocus>
+            <?php if (!empty($errors) && isset($_POST['email'])) { echo $errors; } ?>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password">
+            <?php if (!empty($errors) && isset($_POST['password'])) { echo $errors; } ?>
             <input type="submit" value="Sign In">
         </form>
-        <p class="green-text">¿Ya tienes una cuenta?</p>
+        <p class="green-text">¿No tienes una cuenta?</p>
         <div class="login">
-            <form method="post" action="../controlador/login.php">
-                <button type="submit" name="login" class="btn-login">Iniciar Sesión</button>
+            <form method="post" action="../controlador/signup.php">
+                <button type="submit" name="signup" class="btn-login">Registrarse</button>
             </form>
         </div>
         <div class="return">
