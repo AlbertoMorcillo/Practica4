@@ -10,19 +10,24 @@
     <div class="login-form">
         <h1>Sign In</h1>
         <br>
+        <?php if (isset($errors) && !empty($errors)) : ?>
+        <div class="error-message">
+            <?php echo $errors ?>
+        </div>
+        <?php endif; ?>
         <form action="signin.php" method="post">
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" autofocus>
-            <?php if (!empty($errors) && isset($_POST['email'])) { echo $errors; } ?>
+            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
+
             <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-            <?php if (!empty($errors) && isset($_POST['password'])) { echo $errors; } ?>
+            <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
+
             <input type="submit" value="Sign In">
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>
         <div class="login">
-            <form method="post" action="../controlador/signup.php">
-                <button type="submit" name="signup" class="btn-login">Registrarse</button>
+            <form method="post" action="../controlador/login.php">
+                <button type="submit" name="signup" class="btn-login">Login</button>
             </form>
         </div>
         <div class="return">
