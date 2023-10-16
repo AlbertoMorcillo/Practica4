@@ -48,4 +48,9 @@ function validarEmailExistente($email, $connexio) {
 
     return $statement->rowCount() > 0;
 }
+
+function insertarUsuario($email, $password, $connexio){
+    $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasenya) VALUES (:email, :contrasenya)');
+    $statement->execute(array(':email' => $email, ':contrasenya' => $password));
+}
 ?>

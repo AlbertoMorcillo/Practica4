@@ -20,6 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $errors .= "Ya estas registrado";
             header("Location: ../vista/signin_view.php?error=$errors");
             exit();
+        } else {
+            $insertadoCorrectamente = insertarUsuario($validEmail, $validPassword)
+
         }
     }
 }
