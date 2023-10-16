@@ -24,9 +24,11 @@ include_once '../controlador/signin.php';
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
+            <label for="password">Vuelva a escribir la contraseña:</label>
+            <input type="password" id="passwordRepetida" name="passwordRepetida" value="<?php echo htmlspecialchars($validPasswordRepetida); ?>">
             <button type="submit" name="signin" value="Sign In" class="btn-signin">Sign In </button>
         </form>
-        <p class="green-text">¿No tienes una cuenta?</p>
+        <p class="green-text">¿Ya tienes una cuenta?</p>
         <div class="login">
             <form method="post" action="../controlador/login.php">
                 <button type="submit" name="signup" class="btn-login">Login</button>
