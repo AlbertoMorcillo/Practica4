@@ -13,6 +13,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     validarEmailSignin($validEmail, $errors);
     validarPasswordSignin($validPassword, $errors);
 
+    if (empty($errors)){
+        include_once '../modelo/Conection.php';
+        
+        if(validarEmailExistente($validEmail, $connexio)){
+            $errors .= "Ya estas registrado";
+            header("Location: ../vista/signin_view.php?error=$errors");
+            exit();
+        }
+    }
 }
 
 

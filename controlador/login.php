@@ -19,8 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
         if (!validarEmailExistente($validEmail, $connexio)){
             $errors .= "No estas registrado.<br>";
+            header("Location: ../vista/login_view.php?error=$errors");
+            exit();
         }
         else {
+
             //ToDo: Hacer que si esta todo ok y registrado tambien que inicie sesión y le envie al login que solo los usuarios registrados puede ver,modificar,insertar,borrar,etc.
         }
     } 
