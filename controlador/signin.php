@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['email'] = $validEmail;
             
             // Redirigir al usuario a la página de inicio después de iniciar sesión
-            header("Location: ../vista/index_view_usuario_logged.php");
+            header("Location: ./index_usuario_logged.php");
             exit();
         } else {
             $errors .= "Hubo un error al registrar el usuario. Por favor, intenta nuevamente.";
