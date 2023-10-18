@@ -16,14 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
     if (empty($errors)){
         require_once '../modelo/Conection.php';
-
         if (!validarEmailExistente($validEmail, $connexio)){
             $errors .= "No estas registrado.<br>";
         }
         else {
             $emailOK = true;
         }
-
         if ($emailOK = true){
             session_start();
             $_SESSION['email'] = $validEmail;
