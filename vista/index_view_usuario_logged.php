@@ -24,12 +24,10 @@
     </div>
 
 <div class="login">
-    <form method="post" action="../controlador/index_usuario_logged.php">
+    <form method="post" action="../controlador/index.php">
         <button type="submit" name="login" class="btn-login">Log Out</button>
     </form>
 </div>
-
-
 
     <div class="contenidor">
         <h1>Articles</h1>
