@@ -17,7 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (empty($errors)) {
         require_once '../modelo/Conection.php';
-
         if (validarEmailExistente($validEmail, $connexio)) {
             $errors .= "Ya estás registrado. Por favor, inicia sesión.";
         } else {

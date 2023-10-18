@@ -9,4 +9,6 @@ if (!isset($_SESSION['email'])) {
     exit();
 }
 
+include_once '../vista/index_view_usuario_logged.php'
+
 ?>
