@@ -2,7 +2,7 @@
 //Created by: Alberto Morcillo
 
 $errors ='';
-$insertadoCorrectamente = '';
+$emailOK = false;
 
 // Variables para almacenar valores válidos
 $validEmail = isset($_POST['email']) ? htmlspecialchars($_POST['email']) : '';
@@ -21,9 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
             $errors .= "No estas registrado.<br>";
         }
         else {
-          
+            $emailOK = true;
+        }
 
-            //ToDo: Hacer que si esta todo ok y registrado tambien que inicie sesión y le envie al login que solo los usuarios registrados puede ver,modificar,insertar,borrar,etc.
+        if ($emailOK = true){
+            session_start();
+            $_SESSION['email'] = $validEmail;
+            header("Location: ./index_usuario_logged.php");
+            exit();
+        } else {
+            $erros .= "Hubo un error en el loggin. Por favor, intenta nuevamente.";
         }
     } 
 }
