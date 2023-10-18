@@ -1,7 +1,7 @@
 <?php
 // index.php (Controlador)
 
-include_once '../modelo/Conection.php';
+require_once '../modelo/Conection.php';
 
 
 function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina){

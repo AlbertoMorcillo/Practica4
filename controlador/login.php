@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     validarPasswordLogin($validPassword, $errors);
 
     if (empty($errors)){
-        include_once '../modelo/Conection.php';
+        require_once '../modelo/Conection.php';
 
         if (!validarEmailExistente($validEmail, $connexio)){
             $errors .= "No estas registrado.<br>";

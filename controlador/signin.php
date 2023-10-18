@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     validarPasswordRepetida($validPassword, $errors, $validPasswordRepetida);
 
     if (empty($errors)) {
-        include_once '../modelo/Conection.php';
+        require_once '../modelo/Conection.php';
 
         if (validarEmailExistente($validEmail, $connexio)) {
             $errors .= "Ya estás registrado. Por favor, inicia sesión.";
