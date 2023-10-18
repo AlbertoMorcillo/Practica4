@@ -25,6 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         } else {
             $insertadoCorrectamente = insertarUsuario($validEmail, $validPassword, $connexio);
+            //ToDo: recuerda que el insertarusuario tiene que devolver un booleano y si es correcto o no hara una de las dos cosas al reves.
 
             if ($insertadoCorrectamente) {
                 header("Location: ../vista/index_view_usuario_logged.php");

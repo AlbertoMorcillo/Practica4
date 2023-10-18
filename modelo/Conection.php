@@ -50,8 +50,14 @@ function validarEmailExistente($email, $connexio) {
 }
 
 function insertarUsuario($email, $password, $connexio){
-    $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasena) VALUES (:email, :contrasena)');
-    $statement->execute(array(':email' => $email, ':contrasena' => $password));
+    try {
+        $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasena) VALUES (:email, :contrasena)');
+        $statement->execute(array(':email' => $email, ':contrasena' => $password));
+        return true; // Inserción exitosa
+    } catch (PDOException $e) {
+        // Error al insertar, puedes manejar el error aquí si es necesario
+        return false; // Inserción fallida
+    }
 }
 
 ?>
