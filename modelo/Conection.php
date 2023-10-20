@@ -101,4 +101,32 @@ function getUserId($email, $connexio)
     }
 }
 
+function verificarArticuloPerteneceUsuario($articleId, $userId, $connexio) {
+    $statement = $connexio->prepare('SELECT COUNT(*) FROM articles WHERE article_id = :articleId AND usuari_id = :userId');
+    $statement->execute(array(':articleId' => $articleId, ':userId' => $userId));
+    $count = $statement->fetchColumn();
+    return $count > 0;
+}
+
+function borrarArticulo($article_id, $usuari_id, $connexio){
+    try {
+        // Preparar la consulta SQL con una cláusula WHERE para asegurar que solo se elimine el artículo del usuario actual
+        $statement = $connexio->prepare('DELETE FROM articles WHERE article_id = :article_id AND usuari_id = :usuari_id');
+        $statement->bindParam(':article_id', $article_id, PDO::PARAM_INT);
+        $statement->bindParam(':usuari_id', $usuari_id, PDO::PARAM_INT);
+        $statement->execute();
+        // Verificar si se eliminó el artículo correctamente
+        if ($statement->rowCount() > 0) {
+            return true; // El artículo se eliminó correctamente
+        } else {
+            return false; // No se encontró el artículo para eliminar
+        }
+    } catch (PDOException $e) {
+        // Manejar errores de base de datos
+        echo "Error al borrar el artículo: " . $e->getMessage();
+        return false;
+    }
+}
+
+
 ?>

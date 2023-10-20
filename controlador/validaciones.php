@@ -69,16 +69,22 @@ function validarArticulo($articuloInsertado, &$errors){
     }
 }
 
-function validarArticuloBorrar($articuloBorrado, &$errors){
+function validarArticuloBorrar($articuloBorrado, $userId, &$errors, $connexio){
     if(empty($articuloBorrado)){
-        $errors .= 'El campo de decir que articulo quieres borrar no puede estar vacío si quiere eliminarlo.<br>';
-    }
-    elseif(!preg_match('/^[0-9]+$/', $articuloBorrado)){
-        $errors .= 'Solo puedes ingresar números en el campo de artículo a borrar.<br>';
-    }
-    else{
+        $errors .= 'El campo para indicar qué artículo quieres borrar no puede estar vacío si quieres eliminarlo.<br>';
+    } elseif(!preg_match('/^[1-9][0-9]*$/', $articuloBorrado)) {
+        $errors .= 'Solo puedes ingresar números mayores que 0 en el campo de artículo a borrar.<br>';
+    } else {
         $article_id = intval($articuloBorrado);
+        
+        // Verificar si el artículo pertenece al usuario actual
+        if (!verificarArticuloPerteneceUsuario($article_id, $userId, $connexio)) {
+            $errors .= 'No puedes borrar un artículo que no te pertenece.<br>';
+        }
+        
         return $article_id;
     }
 }
+
+
 ?>
