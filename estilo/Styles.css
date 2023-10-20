@@ -116,6 +116,28 @@ h1 {
     background-color: #45a049;
 }
 
+.btn-add-comment.custom {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-add-comment.custom:hover {
+    background-color: #3e8e41;
+}
+
+.btn-add-comment.custom:active {
+    background-color: #1e5623;
+}
+
 
 /* Estilos para los botones específicos de cada formulario */
 .btn-signin,
@@ -132,11 +154,14 @@ h1 {
     font-size: 16px;
 }
 
+
 .btn-signin:hover,
 .btn-login:hover,
 .btn-return:hover {
     background-color: #006080;
 }
+
+
 
 .green-text {
     color: #008CBA;

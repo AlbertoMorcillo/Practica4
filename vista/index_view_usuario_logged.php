@@ -62,6 +62,12 @@
             <li><a href="?pagina=<?php echo $numero_paginas ?>">Last</a></li>
         </ul>
     </section>
+    <div>
+        <button class="btn-add-comment custom" id="btn-add-comment">Añadir comentario</button>
+        <div id="comment-form">
+            <textarea id="comment-textarea" placeholder="Escribe tu comentario aquí..."></textarea>
+        </div>
+    </div>
 </body>
 
 </html>
