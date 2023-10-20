@@ -5,16 +5,15 @@ $errors = '';
 $insertadoCorrectamente = '';
 require_once '../modelo/Conection.php';
 
-
-// Verificar si el usuario está logueado
-// if (!isset($_SESSION['email'])) {
-//     // Si el usuario no está logueado, redirigirlo a la página de inicio de sesión
-//     header("Location: ./login.php");
-//     exit();
-// } else {
-//     include_once "./login.php";
-//     $_SESSION['email'] = $validEmail;
-// }
+if (isset($_SESSION['email'])) {
+    $validEmail = $_SESSION['email'];
+    $userId = getUserId($validEmail, $connexio); 
+    $_SESSION["usuari_id"] = $userId; // Establim a la session el seu userId
+} else {
+    // Si el usuario no está logueado, redirigirlo a la página de inicio de sesión
+    header("Location: ./login.php");
+    exit();
+}
 
 if ($_SERVER["REQUEST_METHOD"]==="POST"){
     $articuloInsertado = isset($_POST['comentario']) ? htmlspecialchars($_POST['comentario']) : '';

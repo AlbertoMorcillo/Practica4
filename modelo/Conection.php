@@ -80,3 +80,25 @@ function insertarArticulo($articuloInsertado, $connexio){
         echo "Error al insertar el artículo: " . $e->getMessage();
     }
 }
+
+function getUserId($email, $connexio)
+{
+    try {
+        $statement = $connexio->prepare('SELECT usuari_id FROM usuaris WHERE email = :email');
+        $statement->bindValue(':email', $email);
+        $statement->execute();
+        $result = $statement->fetch();
+
+        if (is_array($result)) {
+            return $result['usuari_id'];
+        } else {
+            return null;
+        }
+
+    } catch (PDOException $e) {
+        echo "Error al buscar el user_id: " . $e->getMessage();
+        return null;
+    }
+}
+
+?>
