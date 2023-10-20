@@ -21,7 +21,7 @@
             <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($validEmail); ?>" autofocus>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
-            <button type="submit" name="login" class="btn-login">Login</button>
+            <button type="submit" name="submit" class="btn-login">Login</button>
         </form>
         <p class="green-text">¿No tienes una cuenta?</p>
         <div class="signin">

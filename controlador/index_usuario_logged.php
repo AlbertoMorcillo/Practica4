@@ -3,6 +3,8 @@
 session_start();
 $errors = '';
 $insertadoCorrectamente = '';
+require_once '../modelo/Conection.php';
+
 
 // Verificar si el usuario está logueado
 // if (!isset($_SESSION['email'])) {

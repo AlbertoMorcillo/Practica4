@@ -69,22 +69,19 @@
         </ul>
     </section>
     <div>
-        <button class="btn-add-comment custom" id="btn-add-comment">Añadir artículo</button>
         <div id="comment-form">
             <form action="" method="POST">
                 <textarea id="comment-textarea" name="comentario" placeholder="Escribe tu comentario aquí..."></textarea>
                 <br>
-                <input type="submit" value="Enviar comentario">
+                <button class="btn-add-comment custom" id="btn-add-comment">Añadir artículo</button>
             </form>
         </div>
     </div>
-    <?php if (isset($errors) && !empty($errors)) : ?>
-    <div class="error-message">
-        <?php foreach($errors as $error) : ?>
-            <p><?php echo $error ?></p>
-        <?php endforeach; ?>
-    </div>
-<?php endif; ?>
-</body>
 
+    <?php if (isset($errors) && !empty($errors)) : ?>
+        <div class="error-message">
+            <?php echo $errors ?>
+        </div>
+        <?php endif; ?>
+</body>
 </html>

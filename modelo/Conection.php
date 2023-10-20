@@ -64,14 +64,16 @@ function insertarArticulo($articuloInsertado, $connexio){
     try {
         // Obtener el ID del usuario actualmente logueado
         session_start();
-        $usuari_id = $_SESSION['usuari_id'];
-
+        if (isset($_SESSION["usuari_id"])){
+            $usuari_id = $_SESSION['usuari_id'];
+        }
+        
         $statement = $connexio->prepare('INSERT INTO articles (article, usuari_id) VALUES (:article, :usuari_id)');
         $statement->bindParam(':article', $articuloInsertado);
         $statement->bindParam(':usuari_id', $usuari_id);
         $statement->execute();
-        
-        // Devolver el ID del artículo insertado
+      
+        // Esto devuelve el ID del artículo insertado
         return $connexio->lastInsertId();
     } catch(PDOException $e) {
         // Manejar el error de alguna manera (por ejemplo, mostrar un mensaje de error al usuario)
