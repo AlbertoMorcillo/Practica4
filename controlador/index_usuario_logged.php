@@ -17,11 +17,12 @@ if (isset($_SESSION['email'])) {
 
 if ($_SERVER["REQUEST_METHOD"]==="POST"){
     $articuloInsertado = isset($_POST['comentario']) ? htmlspecialchars($_POST['comentario']) : '';
+    $articuloBorrado = isset($_POST['delete']) ? htmlspecialchars($_POST['delete']) : '';
 
     include_once './validaciones.php';
 
     validarArticulo($articuloInsertado, $errors);
-
+    $article_id = validarArticuloBorrar($articuloInsertado, $errors);
     if(empty($errors)){
         require_once '../modelo/Conection.php';
         insertarArticulo($articuloInsertado, $connexio);

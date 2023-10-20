@@ -68,4 +68,17 @@ function validarArticulo($articuloInsertado, &$errors){
         $errors .= 'El campo de escribir articulo no puede estar vacío a la hora de añadirlo.<br>';
     }
 }
+
+function validarArticuloBorrar($articuloBorrado, &$errors){
+    if(empty($articuloBorrado)){
+        $errors .= 'El campo de decir que articulo quieres borrar no puede estar vacío si quiere eliminarlo.<br>';
+    }
+    elseif(!preg_match('/^[0-9]+$/', $articuloBorrado)){
+        $errors .= 'Solo puedes ingresar números en el campo de artículo a borrar.<br>';
+    }
+    else{
+        $article_id = intval($articuloBorrado);
+        return $article_id;
+    }
+}
 ?>
