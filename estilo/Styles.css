@@ -161,7 +161,28 @@ h1 {
     background-color: #006080;
 }
 
+/* Estilos para el botón de borrar artículo */
+.btn-delete-comment.custom {
+    background-color: #ff0000;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
 
+.btn-delete-comment.custom:hover {
+    background-color: #cc0000;
+}
+
+.btn-delete-comment.custom:active {
+    background-color: #990000;
+}
 
 .green-text {
     color: #008CBA;

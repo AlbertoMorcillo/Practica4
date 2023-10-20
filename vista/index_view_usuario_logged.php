@@ -69,11 +69,22 @@
         </ul>
     </section>
     <div>
+        <br>
+        <hr>
+        <br>
         <div id="comment-form">
             <form action="" method="POST">
-                <textarea id="comment-textarea" name="comentario" placeholder="Escribe tu comentario aquí..."></textarea>
+                <textarea id="comment-textarea" name="comentario" placeholder="Escribe tu artículo aquí..."></textarea>
                 <br>
                 <button class="btn-add-comment custom" id="btn-add-comment">Añadir artículo</button>
+            </form>
+        </div>
+        <div id="delete-form">
+            <form action="" method="POST">
+                <label for="delete-input">Número de artículo:</label>
+                <input type="text" id="delete-input" name="delete" placeholder="Escribe el número del artículo aquí...">
+                <br>
+                <button class="btn-delete-comment custom" name="delete-article" id="btn-delete-comment">Borrar artículo</button>
             </form>
         </div>
     </div>
@@ -82,6 +93,7 @@
         <div class="error-message">
             <?php echo $errors ?>
         </div>
-        <?php endif; ?>
+    <?php endif; ?>
 </body>
+
 </html>
