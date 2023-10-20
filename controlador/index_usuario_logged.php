@@ -1,6 +1,8 @@
 <?php
 // Iniciar la sesión
 session_start();
+$errors = '';
+$insertadoCorrectamente = '';
 
 // Verificar si el usuario está logueado
 // if (!isset($_SESSION['email'])) {
@@ -12,9 +14,22 @@ session_start();
 //     $_SESSION['email'] = $validEmail;
 // }
 
+if ($_SERVER["REQUEST_METHOD"]==="POST"){
+    $articuloInsertado = isset($_POST['comentario']) ? htmlspecialchars($_POST['comentario']) : '';
 
-require_once '../modelo/Conection.php';
+    include_once './validaciones.php';
 
+    validarArticulo($articuloInsertado, $errors);
+
+    if(empty($errors)){
+        require_once '../modelo/Conection.php';
+        insertarArticulo($articuloInsertado, $connexio);
+        $insertadoCorrectamente = 'Articulo insertado correctamente.';
+        header('Location: ./index_usuario_logged.php');
+    }else {
+        $errors .='Ha habido un problema para insertar.';
+        }
+    }
 
 function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina){
     $resultados = obtenerTodosArticulos($connexio, $start, $cantidad_articulos_por_pagina);
@@ -52,9 +67,6 @@ $cantidad_articulos_por_pagina = $datos_paginacion['cantidad_articulos_por_pagin
 $numero_paginas = $datos_paginacion['numero_paginas'];
 
 $articulos = mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina);
-
-// Pasa las variables a la vista
-
 
 include_once '../vista/index_view_usuario_logged.php'
 

@@ -15,19 +15,25 @@
         <form action="" method="post">
             <label for="cantidadArticulosPorPagina">Selecciona la cantidad de artículos por página:</label>
             <select name="cantidadArticulosPorPagina" id="cantidadArticulosPorPagina">
-                <option value="5" <?php if(isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 5) { echo 'selected'; } ?>>5</option>
-                <option value="10" <?php if(isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 10) { echo 'selected'; } ?>>10</option>
-                <option value="20" <?php if(isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 20) { echo 'selected'; } ?>>20</option>
+                <option value="5" <?php if (isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 5) {
+                                        echo 'selected';
+                                    } ?>>5</option>
+                <option value="10" <?php if (isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 10) {
+                                        echo 'selected';
+                                    } ?>>10</option>
+                <option value="20" <?php if (isset($_POST['cantidadArticulosPorPagina']) && $_POST['cantidadArticulosPorPagina'] == 20) {
+                                        echo 'selected';
+                                    } ?>>20</option>
             </select>
             <input type="submit" value="Enviar">
         </form>
     </div>
 
-<div class="login">
-    <form method="post" action="../controlador/index.php">
-        <button type="submit" name="login" class="btn-login">Log Out</button>
-    </form>
-</div>
+    <div class="login">
+        <form method="post" action="../controlador/index.php">
+            <button type="submit" name="login" class="btn-login">Log Out</button>
+        </form>
+    </div>
 
     <div class="contenidor">
         <h1>Articles</h1>
@@ -63,11 +69,22 @@
         </ul>
     </section>
     <div>
-        <button class="btn-add-comment custom" id="btn-add-comment">Añadir comentario</button>
+        <button class="btn-add-comment custom" id="btn-add-comment">Añadir artículo</button>
         <div id="comment-form">
-            <textarea id="comment-textarea" placeholder="Escribe tu comentario aquí..."></textarea>
+            <form action="" method="POST">
+                <textarea id="comment-textarea" name="comentario" placeholder="Escribe tu comentario aquí..."></textarea>
+                <br>
+                <input type="submit" value="Enviar comentario">
+            </form>
         </div>
     </div>
+    <?php if (isset($errors) && !empty($errors)) : ?>
+    <div class="error-message">
+        <?php foreach($errors as $error) : ?>
+            <p><?php echo $error ?></p>
+        <?php endforeach; ?>
+    </div>
+<?php endif; ?>
 </body>
 
 </html>

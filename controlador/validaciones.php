@@ -62,4 +62,10 @@ function validarPasswordRepetida($password, &$errors, $passwordRepetida){
         }
     }
 }
+
+function validarArticulo($articuloInsertado, &$errors){
+    if(empty($articuloInsertado)){
+        $errors .= 'El campo de escribir articulo no puede estar vacío a la hora de añadirlo.<br>';
+    }
+}
 ?>
