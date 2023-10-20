@@ -9,6 +9,7 @@ $validPassword = isset($_POST['password']) ? htmlspecialchars($_POST['password']
 $validPasswordRepetida = isset($_POST['passwordRepetida']) ? htmlspecialchars($_POST['passwordRepetida']) : '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['submit'])){ //hara todas las comprobaciones cuando el usuario apriete el boton de signin con el nombre de submit
     include_once './validaciones.php';
 
     validarEmailSignin($validEmail, $errors);
@@ -36,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             $errors .= "Hubo un error al registrar el usuario. Por favor, intenta nuevamente.";
         }
+     }
     }
 }
 

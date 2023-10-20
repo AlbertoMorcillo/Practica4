@@ -26,7 +26,7 @@ include_once '../controlador/signin.php';
             <input type="password" id="password" name="password" value="<?php echo htmlspecialchars($validPassword); ?>">
             <label for="password">Vuelva a escribir la contraseña:</label>
             <input type="password" id="passwordRepetida" name="passwordRepetida" value="<?php echo htmlspecialchars($validPasswordRepetida); ?>">
-            <button type="submit" name="signin" value="Sign In" class="btn-signin">Sign In </button>
+            <button type="submit" name="submit" value="Sign In" class="btn-signin">Sign In </button>
         </form>
         <p class="green-text">¿Ya tienes una cuenta?</p>
         <div class="login">
