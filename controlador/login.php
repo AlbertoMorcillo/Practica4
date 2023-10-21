@@ -34,6 +34,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 }
 
+/**
+ * entrarEnLogin - Redirige a la página de login
+ *
+ * @return void
+ */
 function entrarEnLogin() {
     if (isset($_POST['login'])) {
         header('Location: ../vista/login_view.php');

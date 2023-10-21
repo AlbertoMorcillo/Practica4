@@ -28,12 +28,26 @@ function calcularTotalArticulos($connexio){
     return $total_articulos;
 }
 
+/**
+ * calcularTotalPaginas
+ *
+ * @param  mixed $connexio a la base de datos
+ * @param  mixed $cantidad_articulos_por_pagina 
+ * @return void
+ */
 function calcularTotalPaginas($connexio, $cantidad_articulos_por_pagina){
     $total_articulos = calcularTotalArticulos($connexio);
     $numero_paginas = ceil($total_articulos / $cantidad_articulos_por_pagina);
     return $numero_paginas;
 }
 
+/**
+ * comprobarUsuarioExistente
+ *
+ * @param  mixed $connexio a la base de datos
+ * @param  mixed $email email a comprobar
+ * @return void
+ */
 function comprobarUsuarioExistente($connexio, $email){
     $statement = $connexio->prepare("SELECT * FROM usuaris WHERE email = :email");
     $statement->bindParam(':email', $email, PDO::PARAM_STR);
@@ -42,6 +56,13 @@ function comprobarUsuarioExistente($connexio, $email){
     return $resultado;
 }
 
+/**
+ * validarEmailExistente
+ *
+ * @param  mixed $email email a validar
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function validarEmailExistente($email, $connexio) {
     $statement = $connexio->prepare('SELECT * FROM usuaris WHERE email = :email');
     $statement->execute(array(':email' => $email));
@@ -49,6 +70,14 @@ function validarEmailExistente($email, $connexio) {
     return $statement->rowCount() > 0;
 }
 
+/**
+ * insertarUsuario
+ *
+ * @param  mixed $email email a insertar
+ * @param  mixed $password password a insertar
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function insertarUsuario($email, $password, $connexio){
     try {
         $statement = $connexio->prepare('INSERT INTO usuaris (email, contrasena) VALUES (:email, :contrasena)');
@@ -60,6 +89,13 @@ function insertarUsuario($email, $password, $connexio){
     }
 }
 
+/**
+ * insertarArticulo
+ *
+ * @param  mixed $articuloInsertado articulo a insertar
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function insertarArticulo($articuloInsertado, $connexio){
     try {
         // Obtener el ID del usuario actualmente logueado
@@ -80,6 +116,13 @@ function insertarArticulo($articuloInsertado, $connexio){
     }
 }
 
+/**
+ * getUserId
+ *
+ * @param  mixed $email email a buscar
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function getUserId($email, $connexio)
 {
     try {
@@ -100,6 +143,14 @@ function getUserId($email, $connexio)
     }
 }
 
+/**
+ * verificarArticuloPerteneceUsuario
+ *
+ * @param  mixed $articleId id del articulo
+ * @param  mixed $userId id del usuario
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function verificarArticuloPerteneceUsuario($articleId, $userId, $connexio) {
     $statement = $connexio->prepare('SELECT COUNT(*) FROM articles WHERE article_id = :articleId AND usuari_id = :userId');
     $statement->execute(array(':articleId' => $articleId, ':userId' => $userId));
@@ -107,6 +158,14 @@ function verificarArticuloPerteneceUsuario($articleId, $userId, $connexio) {
     return $count > 0;
 }
 
+/**
+ * borrarArticulo
+ *
+ * @param  mixed $article_id id del articulo
+ * @param  mixed $usuari_id id del usuario
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function borrarArticulo($article_id, $usuari_id, $connexio){
     try {
         // Preparar la consulta SQL con una cláusula WHERE para asegurar que solo se elimine el artículo del usuario actual
@@ -127,6 +186,13 @@ function borrarArticulo($article_id, $usuari_id, $connexio){
     }
 }
 
+/**
+ * obtenerHashContrase
+ *
+ * @param  mixed $email email a buscar
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function obtenerHashContraseña($email, $connexio) {
     $statement = $connexio->prepare('SELECT contrasena FROM usuaris WHERE email = :email');
     $statement->bindValue(':email', $email);

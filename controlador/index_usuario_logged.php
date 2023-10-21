@@ -44,6 +44,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }
 }
 
+/**
+ * mostrarArticulos
+ *
+ * @param  mixed $connexio a la base de datos
+ * @param  mixed $start desde donde empieza
+ * @param  mixed $cantidad_articulos_por_pagina 
+ * @return void
+ */
 function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina) {
     $resultados = obtenerTodosArticulos($connexio, $start, $cantidad_articulos_por_pagina);
     $listaArticulos = '';
@@ -53,6 +61,11 @@ function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina) {
     return $listaArticulos;
 }
 
+/**
+ * elegirCantidadArticulosPorPagina - Elegir la cantidad de artículos por página
+ *
+ * @return void
+ */
 function elegirCantidadArticulosPorPagina() {
     if (isset($_POST['cantidadArticulosPorPagina'])) {
         $cantidad_articulos_por_pagina = $_POST['cantidadArticulosPorPagina'];
@@ -62,6 +75,12 @@ function elegirCantidadArticulosPorPagina() {
     return $cantidad_articulos_por_pagina;
 }
 
+/**
+ * obtenerDatosPaginacion
+ *
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function obtenerDatosPaginacion($connexio) {
     $cantidad_articulos_por_pagina = elegirCantidadArticulosPorPagina();
     $numero_paginas = calcularTotalPaginas($connexio, $cantidad_articulos_por_pagina);

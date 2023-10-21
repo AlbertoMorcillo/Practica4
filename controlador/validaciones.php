@@ -1,25 +1,60 @@
 <?php
 //Created by: Alberto Morcillo
 
+/**
+ * validarEmailLogin
+ *
+ * @param  mixed $email email a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarEmailLogin($email, &$errors){
     validarEmailGeneral($email, $errors);
 }
 
+/**
+ * validarPasswordLogin
+ *
+ * @param  mixed $password password a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarPasswordLogin($password, &$errors){
     validarPasswordGeneral($password, $errors);
   
 }
 
+/**
+ * validarEmailSignin
+ *
+ * @param  mixed $email email a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarEmailSignin($email, &$errors){
     validarEmailGeneral($email, $errors);
     
 }
 
+/**
+ * validarPasswordSignin
+ *
+ * @param  mixed $password password a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarPasswordSignin($password, &$errors){
     validarPasswordGeneral($password, $errors);
     
 }
 
+/**
+ * validarEmailGeneral
+ *
+ * @param  mixed $email email a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarEmailGeneral($email, &$errors){
     if (empty($email)) {
         $errors .= 'El email no puede estar vacío.<br>';
@@ -30,6 +65,13 @@ function validarEmailGeneral($email, &$errors){
     }
 }
 
+/**
+ * validarPasswordGeneral
+ *
+ * @param  mixed $password password a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarPasswordGeneral($password, &$errors) {
     if (empty($password)){
         $errors .= 'La contraseña no puede estar vacía.<br>';
@@ -52,6 +94,14 @@ function validarPasswordGeneral($password, &$errors) {
     }
 }
 
+/**
+ * validarPasswordRepetida
+ *
+ * @param  mixed $password password a validar
+ * @param  mixed $errors errores
+ * @param  mixed $passwordRepetida password repetida a validar
+ * @return void
+ */
 function validarPasswordRepetida($password, &$errors, $passwordRepetida){
     if(empty($passwordRepetida)){
         $errors .= 'El campo de repetir contraseña no puede estar vacío.<br>';
@@ -63,12 +113,28 @@ function validarPasswordRepetida($password, &$errors, $passwordRepetida){
     }
 }
 
+/**
+ * validarArticulo
+ *
+ * @param  mixed $articuloInsertado articulo a validar
+ * @param  mixed $errors errores
+ * @return void
+ */
 function validarArticulo($articuloInsertado, &$errors){
     if(empty($articuloInsertado)){
         $errors .= 'El campo de escribir articulo no puede estar vacío a la hora de añadirlo.<br>';
     }
 }
 
+/**
+ * validarArticuloBorrar
+ *
+ * @param  mixed $articuloBorrado articulo a validar
+ * @param  mixed $userId id del usuario
+ * @param  mixed $errors errores
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function validarArticuloBorrar($articuloBorrado, $userId, &$errors, $connexio){
     if(empty($articuloBorrado)){
         $errors .= 'El campo para indicar qué artículo quieres borrar no puede estar vacío si quieres eliminarlo.<br>';

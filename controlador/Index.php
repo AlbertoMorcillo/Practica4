@@ -4,6 +4,14 @@
 require_once '../modelo/Conection.php';
 
 
+/**
+ * mostrarArticulos
+ *
+ * @param  mixed $connexio a la base de datos
+ * @param  mixed $start desde donde empieza
+ * @param  mixed $cantidad_articulos_por_pagina 
+ * @return void
+ */
 function mostrarArticulos($connexio, $start, $cantidad_articulos_por_pagina){
     $resultados = obtenerTodosArticulos($connexio, $start, $cantidad_articulos_por_pagina);
     $listaArticulos = '';
@@ -20,13 +28,14 @@ function elegirCantidadArticulosPorPagina(){
         $cantidad_articulos_por_pagina = 5;
     }
     return $cantidad_articulos_por_pagina;
-
-    /**
-     * 
-     * if (!isset($_POST['cantidadArticulosPorPagina'])) {
-     */
 }
 
+/**
+ * obtenerDatosPaginacion
+ *
+ * @param  mixed $connexio a la base de datos
+ * @return void
+ */
 function obtenerDatosPaginacion($connexio) {
     $cantidad_articulos_por_pagina = elegirCantidadArticulosPorPagina();
     $numero_paginas = calcularTotalPaginas($connexio, $cantidad_articulos_por_pagina);
