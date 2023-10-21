@@ -1,5 +1,5 @@
 <?php
-// signin.php
+//Created by: Alberto Morcillo
 
 $errors = '';
 $insertadoCorrectamente = false;

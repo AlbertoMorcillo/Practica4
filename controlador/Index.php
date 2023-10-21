@@ -1,5 +1,5 @@
 <?php
-// index.php (Controlador)
+//Created by: Alberto Morcillo
 
 require_once '../modelo/Conection.php';
 

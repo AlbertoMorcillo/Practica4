@@ -1,5 +1,5 @@
 <?php
-// Conection.php (Modelo)
+//Created by: Alberto Morcillo
 
 try {
     // Establecer la conexión a la base de datos

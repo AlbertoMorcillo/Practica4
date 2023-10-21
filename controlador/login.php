@@ -1,5 +1,5 @@
 <?php
-// login.php
+//Created by: Alberto Morcillo
 
 session_start(); // Llama a session_start solo una vez y al principio del archivo
 

@@ -1,4 +1,5 @@
 <?php
+//Created by: Alberto Morcillo
 // Iniciar la sesión
 session_start();
 $errors = '';
