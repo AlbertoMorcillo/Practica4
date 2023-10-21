@@ -63,7 +63,6 @@ function insertarUsuario($email, $password, $connexio){
 function insertarArticulo($articuloInsertado, $connexio){
     try {
         // Obtener el ID del usuario actualmente logueado
-        session_start();
         if (isset($_SESSION["usuari_id"])){
             $usuari_id = $_SESSION['usuari_id'];
         }
@@ -128,5 +127,13 @@ function borrarArticulo($article_id, $usuari_id, $connexio){
     }
 }
 
+function obtenerHashContraseña($email, $connexio) {
+    $statement = $connexio->prepare('SELECT contrasena FROM usuaris WHERE email = :email');
+    $statement->bindValue(':email', $email);
+    $statement->execute();
+    $result = $statement->fetchColumn();
+
+    return $result;
+}
 
 ?>
