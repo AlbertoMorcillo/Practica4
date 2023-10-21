@@ -79,6 +79,11 @@
                 <button class="btn-add-comment custom" id="btn-add-comment">Añadir artículo</button>
             </form>
         </div>
+        <?php if (isset($insertadoCorrectamente) && !empty($insertadoCorrectamente)) : ?>
+        <div class="success-message">
+            <?php echo $insertadoCorrectamente ?>
+        </div>
+    <?php endif; ?>
         <div id="delete-form">
             <form action="" method="POST">
                 <label for="delete-input">Número de artículo:</label>
@@ -88,7 +93,12 @@
             </form>
         </div>
     </div>
-
+    <?php if (isset($borradoCorrectamente) && !empty($borradoCorrectamente)) : ?>
+        <div class="success-message">
+            <?php echo $borradoCorrectamente ?>
+        </div>
+    <?php endif; ?>
+    
     <?php if (isset($errors) && !empty($errors)) : ?>
         <div class="error-message">
             <?php echo $errors ?>
