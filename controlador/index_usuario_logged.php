@@ -94,6 +94,7 @@ $pagina_actual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
 $cantidad_articulos_por_pagina = elegirCantidadArticulosPorPagina();
 $start = ($pagina_actual - 1) * $cantidad_articulos_por_pagina;
 
+
 $datos_paginacion = obtenerDatosPaginacion($connexio);
 $cantidad_articulos_por_pagina = $datos_paginacion['cantidad_articulos_por_pagina'];
 $numero_paginas = $datos_paginacion['numero_paginas'];
